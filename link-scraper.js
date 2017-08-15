@@ -4,7 +4,7 @@ let nightmare = Nightmare({ show: true });
 nightmare
   .goto('http://zingstudios.com/')
   .wait(3500)
-  .evaluate(function() {
+  .evaluate( () => {
     let links = document.querySelectorAll('a');
     let linkArr = [];
     links.forEach(link => {
@@ -13,11 +13,11 @@ nightmare
     return linkArr;
   })
   .end()
-  .then(function (result) {
+  .then( (result) => {
     result.forEach( link => {
       console.log(link.description,' [',link.url,']')
     })
   })
-  .catch(function (error) {
+  .catch( (error) => {
     console.error('scrape failed: ', error);
   });
